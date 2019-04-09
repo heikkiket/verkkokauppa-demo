@@ -1,0 +1,62 @@
+@import "../font/foundation-icons.css";
+
+header {
+    color: white;
+    min-height: 3rem;
+    background-image: url('../img/Koskettimisto_toned.jpg');
+}
+
+header h1 {
+    padding: 1rem;
+    margin: 0;
+}
+
+.grid-container {
+    padding-left: 3rem;
+}
+
+footer {
+    background: #1a1a1a;
+    color: #999;
+}
+
+.message {
+    background: #DCE47E;
+    color: #1a1a1a;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5em 0;
+}
+
+.error {
+    background: #f9aba8;
+}
+
+button {
+    border-radius: 0.5rem;
+}
+
+/* Ostoskori */
+
+#cart {
+    padding: 0.5rem;
+    margin: 1rem;
+    border: 1px solid #888;
+}
+
+#cart table {
+    margin: 0;
+}
+
+#cart table td:last-child {
+    width: 5em;
+}
+
+#cart table tr:last-child {
+    font-weight: bold;
+}
+
+#cart button {
+    padding: 0.4rem 0.6rem;
+}
