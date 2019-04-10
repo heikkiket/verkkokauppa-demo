@@ -1,8 +1,10 @@
 <h2>Käyttäjätili</h2>
-<?php $session = $this->getRequest()->getSession();
+<?php
+
+// Asetetaan käyttäjä $user-muuttujaan, jotta voidaan tehdä templateen tarvittaessa muutoksia.
+$session = $this->getRequest()->getSession();
 
 $user = $session->read('Auth.User');
-
 if( isset($user)) { ?>
 
 <p><span aria-hidden="true"><i class="fi-torso"> </i></span><a href="<?= $this->Url->build([
