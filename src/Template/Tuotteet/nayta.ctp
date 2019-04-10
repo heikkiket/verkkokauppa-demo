@@ -1,4 +1,6 @@
 <h1><?= h($tuote->nimi) ?></h1>
+<?= $this->Html->link('<< Takaisin', ['action' => 'index'], ['class' => 'button']); ?>
+
 <ul>
     <li>Hinta: <?= h($tuote->hinta) ?>€</li>
     <li>Valmistusvuosi: <?= h($tuote->valmistusvuosi) ?></li>

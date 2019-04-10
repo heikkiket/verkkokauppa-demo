@@ -49,7 +49,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                     <?= $this->Html->link('Soitintyypit', ['controller' => 'Soitintyypit', 'action' => 'index']) ?>
                 </li>
                 <li class="menu-text">
-                    <?= $this->Html->link('Käyttäjät', ['controller' => 'Kayttajat', 'action' => 'index']) ?>
+                    <?= $this->Html->link('Käyttäjätili', ['controller' => 'Kayttajat', 'action' => 'index']) ?>
                 </li>
             </ul>
         </div>
@@ -73,7 +73,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div>
     </div>
     <footer>
-        2019 Heikki Ketoharju
+        2019 Heikki Ketoharju <br>
+        <small>Tämän verkkokaupan tuotteet ovat aitoja syntetisaattoreita. Tuotetietojen lähde: <a href="http://www.vintagesynth.com/">Vintage Synth
+                Explorer</a></small>
+        <p><small>Tehty käyttäen: <a href="http://www.cakephp.org">CakePHP 7.3</a>, <a href="https://mariadb.org/">MariaDB</a>,
+                <a href="https://foundation.zurb.com">Foundation 6</a>, <a href="https://vuejs.org/">Vue.js</a></small></p>
         <?= $this->Html->script('app.js', ['defer']) ?>
     </footer>
 </body>

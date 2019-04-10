@@ -16,16 +16,25 @@ class KayttajatController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['kirjauduUlos']);
+
+        $this->Auth->allow(['kirjaudu', 'kirjauduUlos']);
     }
 
-    public function isAuthorized($user)
+    public function isAuthorized($user = null)
     {
+
         $action = $this->request->getParam('action');
 
-        if ( in_array($action, ['add', 'edit', 'delete'])) {
+
+        if (in_array($action, ['view', 'edit'])) {
             return true;
         }
+
+        if (in_array($action, ['add', 'delete'])) {
+            return (bool)($user['rooli'] === 'admin');
+        }
+
+
 
         return false;
     }
@@ -37,9 +46,7 @@ class KayttajatController extends AppController
      */
     public function index()
     {
-        $kayttajat = $this->paginate($this->Kayttajat);
-
-        $this->set(compact('kayttajat'));
+        $this->redirect(['action' => 'view']);
     }
 
     /**
@@ -51,9 +58,8 @@ class KayttajatController extends AppController
      */
     public function view($id = null)
     {
-        $kayttajat = $this->Kayttajat->get($id, [
-            'contain' => []
-        ]);
+        $id = $this->getRequest()->getSession()->read('Auth.User.id');
+        $kayttajat = $this->Kayttajat->get($id);
 
         $this->set('kayttajat', $kayttajat);
     }
@@ -123,13 +129,14 @@ class KayttajatController extends AppController
     }
 
     public function kirjaudu() {
+
         if($this->request->is('post')) {
             $kayttaja = $this->Auth->identify();
 
             if ($kayttaja) {
                 $this->Auth->setUser($kayttaja);
 
-                return $this->redirect($this->Auth->redirectUrl());
+                return $this->redirect(['Controller' => 'tuotteet', 'action' => 'index']);
             }
             $this->Flash->error('Käyttäjätunnus tai salasana on virheellinen.');
         }

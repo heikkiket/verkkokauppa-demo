@@ -2,5 +2,5 @@
 <?= $this->Form->create() ?>
 <?= $this->Form->control('email') ?>
 <?= $this->Form->control('salasana') ?>
-<?= $this->Form->button('Login') ?>
+<?= $this->Form->button('Login', ['class' => 'button']) ?>
 <?= $this->Form->end() ?>

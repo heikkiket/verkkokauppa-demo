@@ -32,13 +32,5 @@
             <th scope="row"><?= __('Puhelin') ?></th>
             <td><?= h($kayttajat->puhelin) ?></td>
         </tr>
-        <tr>
-            <th scope="row"><?= __('Salasana') ?></th>
-            <td><?= h($kayttajat->salasana) ?></td>
-        </tr>
-        <tr>
-            <th scope="row"><?= __('Id') ?></th>
-            <td><?= $this->Number->format($kayttajat->id) ?></td>
-        </tr>
     </table>
 </div>

@@ -8,7 +8,7 @@ class TuotteetController extends AppController
 {
 
     public $paginate = [
-        'limit' => 5
+        'limit' => 10
     ];
 
     public function initialize()
@@ -23,8 +23,9 @@ class TuotteetController extends AppController
         $action = $this->request->getParam('action');
 
         if ( in_array($action, ['lisaa', 'poista', 'muokkaa'])) {
-            return true;
+            return (bool)($user['rooli'] === 'admin');
         }
+
 
         return false;
     }
@@ -37,7 +38,7 @@ class TuotteetController extends AppController
 
 
         $query = $this->Tuotteet->find()->order($orderclause);
-        $tuotteet = $this->Paginator->paginate($query);
+        $tuotteet = $this->paginate($query);
 
         $this->set(compact('tuotteet'));
 
@@ -48,6 +49,7 @@ class TuotteetController extends AppController
         }
 
 
+        $this->set('rooli', $this->Auth->user('rooli'));
         $this->set('orderby', $orderby);
         $this->set('asc', $asc);
     }
@@ -73,9 +75,9 @@ class TuotteetController extends AppController
             ->where($hakuehto)
             ->order($orderclause);
 
-        $tuotteet = $this->Paginator->paginate($query);
+        $tuotteet = $this->paginate($query);
 
-
+        $this->set('rooli', $this->Auth->user('rooli'));
         $this->set(compact('hakusana'));
         $this->set(compact('tuotteet'));
 

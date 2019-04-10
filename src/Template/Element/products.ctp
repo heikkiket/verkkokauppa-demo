@@ -1,15 +1,17 @@
 <table id="tuotteet">
     <tr>
+        <th><?= $this->Link->makeOrder('Tuotekoodi', $asc) ?></th>
         <th><?= $this->Link->makeOrder('Nimi', $asc) ?></th>
         <th><?= $this->Link->makeOrder('Hinta', $asc) ?></a></th>
-        <th>Toiminto</th>
-
     </tr>
 
     <!-- Here is where we iterate through our $articles query object, printing out article info -->
 
     <?php foreach ($tuotteet as $tuote): ?>
         <tr>
+            <td>
+                <?= $tuote->tuotekoodi ?>
+            </td>
             <td>
                 <?= $this->Html->link($tuote->nimi, ['action' => 'nayta', $tuote->tuotekoodi])?>
             </td>
@@ -27,19 +29,24 @@
                 <button class="button"
                         onclick="addToCart('<?= $tuote->tuotekoodi ?>', '<?= $tuote->nimi ?>', <?= $tuote->hinta ?>)
                         ">Lisää koriin</button>
-                <?= $this->Html->link('Muokkaa', ['action' => 'muokkaa', $tuote->tuotekoodi], ['class' => 'button'])?>
-                <?php } ?>
+
+                    <?php if ($rooli == 'admin') {
+                        echo $this->Html->link('Muokkaa', ['action' => 'muokkaa', $tuote->tuotekoodi], ['class' => 'button']);
+                    }
+                } ?>
             </td>
         </tr>
     <?php endforeach; ?>
 </table>
 <div class="paginator">
     <ul class="pagination">
-        <?= $this->Paginator->first('<< ' . __('first')) ?>
-        <?= $this->Paginator->prev('< ' . __('previous')) ?>
-        <?= $this->Paginator->numbers() ?>
-        <?= $this->Paginator->next(__('next') . ' >') ?>
-        <?= $this->Paginator->last(__('last') . ' >>') ?>
+        <div class="button-group">
+            <?= $this->Paginator->first('<< ' . __('first'), ['class' => 'button']) ?>
+            <?= $this->Paginator->prev('< ' . __('previous'), ['class' => 'button']) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->last(__('last') . ' >>') ?>
+        </div>
     </ul>
-    <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
+    <p><?= $this->Paginator->counter(['format' => __('Sivu {{page}}/{{pages}}, näytetään {{current}} tuotetta. Tuotteita kaikkiaan {{count}}.')]) ?></p>
 </div>
