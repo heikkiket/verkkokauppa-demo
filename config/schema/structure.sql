@@ -27,7 +27,7 @@ CREATE TABLE kayttajat
   email VARCHAR(255) NOT NULL,
   puhelin VARCHAR(255) NOT NULL,
   salasana VARCHAR(1024) NOT NULL,
-  tyyppi INT NOT NULL, /* 1 = ylläpitäjä, 2 = asiakas, 3 = anonyymi */
+  rooli VARCHAR(20), /* admin, customer*/
   PRIMARY KEY (id)
 );
 
