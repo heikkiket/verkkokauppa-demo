@@ -2,6 +2,7 @@
 
 This is a small demo webshop. It uses following technologies:
 
+ * MariaDB
  * CakePHP 3.7
  * Vue.js 2.6.10
  * Foundation 6
