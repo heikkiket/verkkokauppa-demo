@@ -40,12 +40,12 @@ const app = new Vue({
     }
 });
 
-function addToCart(item, nimi, hinta) {
-    console.log(item);
-    postData(url + format, {tuotekoodi: item})
+function addToCart(tuotekoodi, nimi, hinta) {
+    console.log(tuotekoodi);
+    postData(url + format, {tuotekoodi: tuotekoodi})
         .then(data => {
             console.log(JSON.stringify(data));
-            app.products.push({tuotteet: {nimi: nimi, hinta: hinta}});
+            app.products.push({tuotekoodi: tuotekoodi, tuotteet: {nimi: nimi, hinta: hinta}});
 
         })
         .catch(error => console.log(error));
