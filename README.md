@@ -15,3 +15,5 @@ This is a small demo webshop. It uses following technologies:
  your shop.
  
  Not much to say about this...
+
+![Screenshot of the shop](screenshots/screenshot.png "Screenshot of the shop")
